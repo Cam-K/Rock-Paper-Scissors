@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+    <title>Rock, Paper, Scissors</title>
+        
+        
+        <script>
+		
+		function backhome(){
+			location="Rock, Paper, Scissors.html";	
+			
+			
+			return false;
+			
+		}
+		
+		
+		
+		
+		</script>
+    	<style>
+	
+	
+	
+	#container {
+			/* the 'true' width of an html element is the width + left and right padding + the right and right border */
+			width: 500px;
+			background-color:#093 ;
+			padding: 20px;
+			border: 5px solid #00C;
+			/* a left and right margin set to auto tells the browser to automatically keep the left and right margin equal to each other based on how wide the browser window is */
+			margin-left: auto;
+			margin-right: auto;
+			font-family: Verdana, Geneva, sans-serif;
+		
+			
+			
+		}
+		
+	h1 {
+		text-align: center;	
+		margin-left: auto;
+		margin-right: auto;
+		font-family: Verdana, Geneva, sans-serif;
+		
+	}
+	
+	form{
+		text-align: center;
+			
+	}
+	
+	body{
+		background-color: #0361FC;	
+		
+	}
+		
+	</style>
+    
+
+</head>
+<body>
+
+<h1>Top 3 scoreboard</h1>
+
+<div id="container"></div>
+<div id="back">
+
+<form name="back" method="post" onSubmit="return backhome()">
+<input type="submit" value="Go back to start">
+</form>
+
+</div>
+
+    <script>
+		//this variables makes it so that it only sets all the scores once
+		var counter = parseInt(sessionStorage.getItem("counter"));
+		
+		//retrieves the score from the game that was just played
+		var currentScore = parseInt(sessionStorage.getItem("scores"));
+		
+		
+		if(counter != "1"){
+			//this if statement makes it so that it only sets the score variables to 0 one time
+			var score1 = 0;
+			var score2 = 0;
+			var score3 = 0;
+			
+			counter = "1";
+			
+			sessionStorage.setItem("counter", counter);
+			
+			
+		} else{
+			//these variables are here so that it is able to retain the score board
+			var score1 = parseInt(sessionStorage.getItem("score1"));
+			var score2 = parseInt(sessionStorage.getItem("score2"));
+			var score3 = parseInt(sessionStorage.getItem("score3"));
+		}
+		
+		//these if statements makes it so that it shifts the data down the scoreboard every time a new score that was higher than the previous 
+		
+		if(score1 < currentScore){
+					
+				score3 = score2;
+				
+				score2 = score1;
+					
+				score1 = currentScore;
+				
+			sessionStorage.setItem("score1", score1);
+			sessionStorage.setItem("score2", score2);
+			sessionStorage.setItem("score3", score3);
+				
+		} else if(score2 < currentScore && score1 > currentScore){
+				
+				score3 = score2;
+				
+				score2 = currentScore;
+				
+			sessionStorage.setItem("score1", score1);
+			sessionStorage.setItem("score2", score2);
+			sessionStorage.setItem("score3", score3);
+				
+		} else if(score3 < currentScore && score2 > currentScore){
+				
+				score3 = currentScore;	
+				
+				sessionStorage.setItem("score1", score1);
+				sessionStorage.setItem("score2", score2);
+				sessionStorage.setItem("score3", score3);
+				
+		} 
+		
+		
+	
+		
+		//prints the data down on the web page
+		
+		document.getElementById("container").innerHTML="<ol><li> " + score1 + "</li><li> " + score2 + "</li><li> " + score3 + "</li></ol>";
+		
+		
+		
+		
+		
+	</script>
+	
+	
+	
+    
+</body>
+
+</html>

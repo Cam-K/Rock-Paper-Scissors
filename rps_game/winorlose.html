@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+    <title>Rock, Paper, Scissors</title>
+        
+        
+        <script>
+		
+		function backhome(){
+			location="Rock, Paper, Scissors.html";	
+			
+			
+			return false;
+			
+		}
+		
+		function scoreboard(){
+			location="scoreboard.html";
+			
+			return false;	
+			
+		}
+		
+		
+		</script>
+    	<style>
+	
+	
+	
+	#container {
+			/* the 'true' width of an html element is the width + left and right padding + the right and right border */
+			width: 500px;
+			background-color:#093 ;
+			padding: 20px;
+			border: 5px solid #00C;
+			/* a left and right margin set to auto tells the browser to automatically keep the left and right margin equal to each other based on how wide the browser window is */
+			margin-left: auto;
+			margin-right: auto;
+			font-family: Verdana, Geneva, sans-serif;
+		
+			
+			
+		}
+		
+	h1 {
+		text-align: center;	
+	}
+	
+	form{
+		text-align: center;
+			
+	}
+	
+	body{
+		background-color: #0361FC;	
+		
+	}
+		
+	</style>
+    
+
+</head>
+<body>
+
+<div id="container"></div>
+<div id="back"></div>
+
+    <script>
+	
+		//if gamemode = 1 then 2/3
+		//if gamemode = 2 then 3/5
+		//if gamemode = 3 then standard
+		
+			
+		//parseInt converts the variable from a string to an integer
+		//these 2 variables retrieve the score from the previous page
+		var score=parseInt(sessionStorage.getItem("scores"));
+		var aiScore=parseInt(sessionStorage.getItem("aiScores"));
+		// this retrieves the game mode
+		var gamemode=sessionStorage.getItem("game");	
+		
+		// these are the win conditions and depending on the game mode it will follow certain win conditions
+		if(gamemode==1){
+			if (score>=2 && aiScore == 0){
+				
+				document.getElementById("container").innerHTML="<p>You won " + score +  " to " + aiScore + "</p>" + "<form name='back' method='post' onSubmit='return backhome()'><input type = 'submit' value='Back'>";
+				
+			} else if (aiScore>=2 && score == 0){
+				
+				document.getElementById("container").innerHTML="<p>The computer won " + aiScore + " to " + score+"</p>" + "<form name='back' method='post' onSubmit='return backhome()'><input type = 'submit' value='Back'>";
+					
+			} else if (aiScore>=3){
+				
+				document.getElementById("container").innerHTML="<p>The computer won " + aiScore + " to "+ score + "</p>" + "<form name='back' method='post' onSubmit='return backhome()'><input type = 'submit' value='Back'>";
+				
+			} else if (score>=3){
+				
+				document.getElementById("container").innerHTML="<p>You won " + score +  " to " + aiScore + "</p>" + "<form name='back' method='post' onSubmit='return backhome()'><input type = 'submit' value='Back'>";
+				
+			} else if (score>=2 && aiScore == 1){
+				
+				document.getElementById("container").innerHTML="<p>You won " + score +  " to " + aiScore + "</p>" + "<form name='back' method='post' onSubmit='return backhome()'><input type = 'submit' value='Back'>";
+				
+			} else if (aiScore>=2 && score == 1){
+				
+				document.getElementById("container").innerHTML="<p>The computer won " + aiScore + " to " + score + "</p>" + "<form name='back' method='post' onSubmit='return backhome()'><input type = 'submit' value='Back'>";
+				
+			} 
+			
+			
+			
+		} else if(gamemode==2){
+		
+			if (score>=3 && aiScore == 0){
+				
+				document.getElementById("container").innerHTML="<p>You won " + score +  " to " + aiScore + "</p>" + "<form name='back' method='post' onSubmit='return backhome()'><input type = 'submit' value='Back'>";
+				
+			} else if (aiScore>=3 && score == 0){
+				
+				document.getElementById("container").innerHTML="<p>The computer won " + aiScore + " to " + score + "</p>" + "<form name='back' method='post' onSubmit='return backhome()'><input type = 'submit' value='Back'>";
+								
+			} else if (aiScore>=5){
+				
+				document.getElementById("container").innerHTML="<p>The computer won " + aiScore + " to " + score + "</p>" + "<form name='back' method='post' onSubmit='return backhome()'><input type = 'submit' value='Back'>";
+				
+			} else if (score>=5){
+				
+				document.getElementById("container").innerHTML="<p>You won " + score +  " to " + aiScore + "</p>" + "<form name='back' method='post' onSubmit='return backhome()'><input type = 'submit' value='Back'>";
+				
+			} else if (score>=3 && aiScore == 1){
+				
+				document.getElementById("container").innerHTML="<p>You won " + score +  " to " + aiScore + "</p>" + "<form name='back' method='post' onSubmit='return backhome()'><input type = 'submit' value='Back'>";
+				
+			} else if (aiScore>=3 && score == 1){
+				
+				document.getElementById("container").innerHTML="<p>The computer won " + aiScore + " to " + score + "</p>" + "<form name='back' method='post' onSubmit='return backhome()'><input type = 'submit' value='Back'>";
+				
+			} else if (aiScore>=3 && score == 2){
+				
+				document.getElementById("container").innerHTML="<p>The computer won " + aiScore + " to " + score + "</p>" + "<form name='back' method='post' onSubmit='return backhome()'><input type = 'submit' value='Back'>";
+				
+			} else if (score>=3 && aiScore == 2){
+				
+				document.getElementById("container").innerHTML="<p>You won " + score +  " to " + aiScore + "</p>" + "<form name='back' method='post' onSubmit='return backhome()'><input type = 'submit' value='Back'>";;
+					
+			}
+
+
+		
+		} else if (gamemode==3){
+			
+			document.getElementById("container").innerHTML="<p>You've lost all your lives. You've made it to " + score + " points.</p>" +"<form name='back' method='post' onSubmit='return scoreboard()'><input type = 'submit' value='Back'>";
+			
+			
+		}
+		
+
+		
+
+	</script>
+
+
+
+    
+</body>
+
+</html>

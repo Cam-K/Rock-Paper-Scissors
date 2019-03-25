@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+    <title>Rock, Paper, Scissors</title>
+    
+    <script>
+	
+		var ai=Math.floor(Math.random()*(4-1)+1);
+		var score=parseInt(sessionStorage.getItem("scores"));
+		var aiScore=parseInt(sessionStorage.getItem("aiScores"));
+		
+	
+	
+		
+	function rockpaperscissors(){
+		
+
+
+		
+		ai=Math.floor(Math.random()*(4-1)+1);
+		
+		
+		// if ai = 1 then it is rock
+		// if ai = 2 then it is paper
+		// if ai = 3 then it is scissors
+		var choice;
+		if(document.getElementById("rock").checked){
+			choice="1";
+		} else if(document.getElementById("paper").checked){
+			choice="2";	
+		} else if(document.getElementById("scissors").checked){
+			choice="3";	
+		} 
+		
+		
+		
+		
+		if(choice == "1" && ai == "1"){
+			
+			
+			document.getElementById("container").innerHTML="<p>You got a tie! You and the computer both rolled a rock.</p><p><form name='Retry' method='post' onSubmit='return rockpaperscissors()'><input type='submit' value='Next'></p><p>Your Score: </p>"+ score + "<p>Computer Score: </p>" + aiScore ;	
+			
+
+		
+		} else if(choice == "1" && ai == "2"){
+			
+			aiScore = aiScore + 1;
+			sessionStorage.setItem("aiScores", aiScore);
+			
+			
+			document.getElementById("container").innerHTML="<p>You rolled a rock. The computer rolled paper. Paper beats rock!</p><p><form name='Retry' method='post' onSubmit='return rockpaperscissors()'><input type='submit' value='Next'></p><p>Your Score: </p>"+ score + "<p>Computer Score: </p>" + aiScore;	
+			
+
+			
+				
+		} else if (choice == "1" && ai == "3"){
+			
+			score=score+1;
+			
+			sessionStorage.setItem("scores", score);
+			
+			document.getElementById("container").innerHTML="<p>You rolled a rock. The computer rolled scissors. Rock beats scissors!</p><p><form name='Retry' method='post' onSubmit='return rockpaperscissors()'><input type='submit' value='Next'></p><p>Your Score: </p>"+ score + "<p>Computer Score: </p>" + aiScore;
+			
+
+			
+		}  else if (choice == "2" && ai == "1"){
+			
+			score=score+1;
+			
+			sessionStorage.setItem("scores", score);
+			
+			document.getElementById("container").innerHTML="<p>You rolled a paper. The computer rolled rock. paper beats paper!</p><p><form name='Retry' method='post' onSubmit='return rockpaperscissors()'><input type='submit' value='Next'></p><p>Your Score: </p>"+ score + "<p>Computer Score: </p>" + aiScore;
+			
+
+		} else if (choice == "2" && ai == "2"){
+			
+			document.getElementById("container").innerHTML="<p>You got a tie! You and the computer both rolled a paper.</p><p><form name='Retry' method='post' onSubmit='return rockpaperscissors()'><input type='submit' value='Next'></p><p>Your Score: </p>"+ score + "<p>Computer Score: </p>" + aiScore;	
+			
+			
+		} else if (choice == "2" &&  ai == "3"){
+			
+			aiScore = aiScore + 1;
+			sessionStorage.setItem("aiScores", aiScore);	
+			
+			document.getElementById("container").innerHTML="<p>You rolled a paper. The computer rolled scissors. scissors beats paper!</p><p><form name='Retry' method='post' onSubmit='return rockpaperscissors()'><input type='submit' value='Next'></p><p>Your Score: </p>"+ score + "<p>Computer Score: </p>" + aiScore;
+			
+
+			
+		} else if (choice == "3" && ai == "1"){
+			
+			aiScore = aiScore + 1;
+			sessionStorage.setItem("aiScores", aiScore);	
+			
+			document.getElementById("container").innerHTML="<p>You rolled a scissors. The computer rolled rock. rock beats scissors!</p><p><form name='Retry' method='post' onSubmit='return rockpaperscissors()'><input type='submit' value='Next'></p><p>Your Score: </p>"+ score + "<p>Computer Score: </p>" + aiScore;
+
+			
+		} else if (choice == "3" && ai == "2"){
+			
+			score=score+1;
+			
+			sessionStorage.setItem("scores", score);
+			
+			document.getElementById("container").innerHTML="<p>You rolled a scissors. The computer rolled paper. scissors beats paper!</p><p><form name='Retry' method='post' onSubmit='return rockpaperscissors()'><input type='submit' value='Next'></p><p>Your Score: </p>"+ score + "<p>Computer Score: </p>" + aiScore;
+			
+
+
+
+				
+		} else if (choice == "3" && ai == "3"){
+			
+			document.getElementById("container").innerHTML="<p>You got a tie! You and the computer both rolled a scissors.</p><p><form name='Retry' method='post' onSubmit='return rockpaperscissors()'><input type='submit' value='Next'></p><p>Your Score: </p>"+ score + "<p>Computer Score: </p>" + aiScore;
+				
+
+			
+		} 
+		
+		
+		return false;	
+	}
+
+	</script>
+    
+    	<style>
+	
+
+	
+	#container {
+			/* the 'true' width of an html element is the width + left and right padding + the right and right border */
+			width: 500px;
+			background-color:#093 ;
+			padding: 20px;
+			border: 5px solid #00C;
+			/* a left and right margin set to auto tells the browser to automatically keep the left and right margin equal to each other based on how wide the browser window is */
+			margin-left: auto;
+			margin-right: auto;
+			font-family: Verdana, Geneva, sans-serif;
+			
+			
+		}
+		
+	h1 {
+		text-align: center;	
+	}
+	
+	form{
+		text-align: center;
+			
+	}
+	body{
+		background-color: #0361FC;	
+		
+	}		
+	</style>
+    
+
+</head>
+<body>
+
+<div id="container">
+	<h1>Rock, Paper, Scissors</h1>
+    
+    <form name="RPS" method="post" onSubmit="return rockpaperscissors()">
+    <input type="radio" id="rock" name="rps" value="Rock">Rock<br>
+    <input type="radio" id="paper" name="rps" value="Paper">Paper<br>
+    <input type="radio" id="scissors" name="rps" value="Scissors">Scissors<br>
+    
+    <input type="submit" value="Submit">
+
+    
+    
+	
+</div>
+
+<script>
+		//if gamemode = 1 then 2/3
+		//if gamemode = 2 then 3/5
+		//if gamemode = 3 then standard
+		//if gamemode = 4 then freeplay
+	
+		
+		
+		
+		sessionStorage.setItem("game", 2);
+		
+		if (score>=3 && aiScore == 0){
+			
+			location="winorlose.html";
+			
+		} else if (aiScore>=3 && score == 0){
+			
+			location="winorlose.html";
+							
+		} else if (aiScore>=5){
+			
+			location="winorlose.html";
+			
+		} else if (score>=5){
+			
+			location="winorlose.html";
+			
+		} else if (score>=3 && aiScore == 1){
+			
+			location="winorlose.html";
+			
+		} else if (aiScore>=3 && score == 1){
+			
+			location="winorlose.html";
+			
+		} else if (aiScore>=3 && score == 2){
+			
+			location="winorlose.html";	
+			
+		} else if (score>=3 && aiScore == 2){
+			
+			location="winorlose.html";
+				
+		}
+</script>
+
+    
+</body>
+
+</html>

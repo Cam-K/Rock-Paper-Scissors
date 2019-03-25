@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+    <title>Rock, Paper, Scissors</title>
+    <script>
+	//these intialize the scores and lives
+	sessionStorage.setItem("scores", 0);
+	sessionStorage.setItem("aiScores", 0);
+	sessionStorage.setItem("life", 3);
+	
+	function twoOutOfThree(){
+		//these link to the game modes that was selected
+		location="twooutofthree.html";
+		
+		return false;
+	}
+	
+	function threeOutOfFive(){
+		//these link to the game modes that was selected
+		location="threeoutoffive.html";
+		return false;
+	}
+	
+	function freePlay(){
+		//these link to the game modes that was selected
+		location="free.html";
+		return false;
+	}
+
+	
+	function standard(){
+		//these link to the game modes that was selected
+		location="standard.html";
+		return false;	
+		
+	}
+		
+	</script>
+    
+    	<style>
+	
+
+	
+	#container {
+			/* the 'true' width of an html element is the width + left and right padding + the right and right border */
+			width: 500px;
+			background-color:#093 ;
+			padding: 20px;
+			border: 5px solid #00C;
+			/* a left and right margin set to auto tells the browser to automatically keep the left and right margin equal to each other based on how wide the browser window is */
+			margin-left: auto;
+			margin-right: auto;
+			font-family: Verdana, Geneva, sans-serif;
+			
+			
+		}
+		
+	h1 {
+		text-align: center;
+	}
+	
+	form{
+		text-align: center;
+			
+	}
+	
+	p {
+	
+	text-align: center;
+	
+	}
+	
+	.bold{
+		font-weight: bold;	
+		
+	}
+	
+	body{
+		background-color: #0361FC;	
+			
+	}
+		
+	</style>
+    
+
+</head>
+<body>
+
+<div id="container">
+	<h1>Rock, Paper, Scissors</h1>
+	<img src="images/rps.png" width="500">    
+    <p class="bold">How to play Rock, Paper, Scissors</p>
+    
+    <p>In the game of Rock, Paper, Scissors, you get to get to choose either rock, paper, scissors. The computer will pick one too. Each of the 3 can win or lose to each either. Rock beats Scissors, but loses to paper. Paper beats rock but loses to scissors. Scissors beats paper but loses to rock. These are the basic rules of Rock, Paper, Scissors. There are 4 game modes. Standard is when you play until you nolonger have any lives left. 2/3 is a Rock, Paper, Scissors game out of 2/3. 3/5 is a Rock, Paper, Scissors game out of 3/5. Free play is a game going as long as you would like to play. There are no lives in this game mode. </p>
+    
+    
+    
+    <form name="score" method="post" onSubmit="return standard()">
+    <input type="submit" value="standard">
+    </form>
+    
+    
+	<form name="2/3" method="post" onSubmit="return twoOutOfThree()">
+    <input type="submit" value="2 out of 3">
+    </form>
+    
+    <form name="3/5" method="post" onSubmit="return threeOutOfFive()">
+    <input type="submit" value="3 out of 5">
+    </form>
+    
+    <form name="free" method="post" onSubmit="return freePlay()">
+    <input type="submit" value="free play">
+    </form>
+
+</div>
+
+
+    
+</body>
+
+</html>
